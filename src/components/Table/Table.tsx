@@ -11,8 +11,8 @@ export default function Tables(data:any){
         <>
             <TableContainer component={Paper} sx={{ flex : 1 }} >
                 <Table sx={{ flex : 1 }} aria-label="customized table">
-                    <TableHeader props = {data.headerData} setSearchTerm={setSearchTerm} />
-                    <TableFooters data={data} searchTerm={searchTerm}/>
+                    <TableHeader props = {data.headerData} />
+                    <TableFooters data={data} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
                 </Table>
             </TableContainer>
         </>

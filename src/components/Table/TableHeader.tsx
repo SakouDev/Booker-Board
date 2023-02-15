@@ -23,15 +23,6 @@ export default function TableHeader({props,setSearchTerm}:any){
   return (
       <TableHead>
           <TableRow style={{backgroundColor:'#1976d2'}}>
-              <TableCell align="center"  style={{width:'15%',backgroundColor:'white'}} >
-                <TextField 
-                  inputProps={{ style: { color: '#1976d2'}}}
-                  variant='outlined' 
-                  margin="none" 
-                  label="Search" 
-                  onChange={(element) => setSearchTerm(element.target.value)}
-                />
-              </TableCell>
               <TableCell align="center"> {headerData.option1} </TableCell>
               <TableCell align="center"> {headerData.option2} </TableCell>
               <TableCell align="center"> {headerData.option3} </TableCell>

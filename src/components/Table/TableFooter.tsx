@@ -11,6 +11,7 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
 import TableData from "./TableData";
+import { TableCell, TextField } from '@mui/material';
 
 
 function TablePaginationActions(props:any){
@@ -75,7 +76,7 @@ TablePaginationActions.propTypes = {
     rowsPerPage: PropTypes.number.isRequired,
 };
 
-export default function TableFooters({data, searchTerm}:any) {
+export default function TableFooters({data, searchTerm, setSearchTerm}:any) {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
   
@@ -93,6 +94,15 @@ export default function TableFooters({data, searchTerm}:any) {
             <TableData props={data} page={page} rowsPerPage={rowsPerPage} searchTerm={searchTerm}/>
             <TableFooter>
                 <TableRow>
+                    <TableCell align='center' style={{width:'25%',backgroundColor:'white'}} >
+                      <TextField 
+                        inputProps={{ style: { color: '#1976d2'}}}
+                        variant='outlined' 
+                        margin="none" 
+                        label="Search" 
+                        onChange={(element) => setSearchTerm(element.target.value)}
+                      />
+                    </TableCell>
                     <TablePagination
                         rowsPerPageOptions={[2, 5, 10, 25, 50,{ label: 'All', value: -1 }]}
                         colSpan={6}

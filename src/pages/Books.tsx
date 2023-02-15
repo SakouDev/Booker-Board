@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import Tables from '../components/Table/Table'
-import ApiService from "../api/ApiService"
+import {ApiService} from "../api/ApiService"
 import CircularProgress from '@mui/material/CircularProgress'
+import SideBar from '../components/Form/Form'
 
 export default function Books() {
 
   const [books, setBooks] = useState(null)
 
   useEffect(() => {
-    ApiService.get('books').then((response)=>console.log(response.data))
+    ApiService.get('books').then((response)=>setBooks(response.data.result))
   }, [])
 
     const HeaderCandidat = 
@@ -17,13 +18,14 @@ export default function Books() {
       option2 : "Type",
       option3 : "Author",
       option4 : "Location",
-      option5 : "Availability"
+      option5 : "Availability" 
     }
 
     if(books == null) return <CircularProgress size={100} style={{marginTop:'20%'}} />
-
+    console.log(books)
   return (
-    // <Tables data={books} headerData={HeaderCandidat} />
-    <h1>Books</h1>
+    <>
+      <Tables data={books} headerData={HeaderCandidat} />
+    </>
   )
 }

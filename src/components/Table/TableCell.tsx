@@ -7,6 +7,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import CircleIcon from '@mui/icons-material/Circle';
 import { green, red } from '@mui/material/colors';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function TableCellElement(
     {
@@ -32,22 +33,16 @@ export default function TableCellElement(
         },
         }));
 
+        const navigate = useNavigate()
+
     return(
         <>
             <StyledTableRow key={TableElementId}>
-                <TableCell  align="center" style={{cursor:'pointer'}} onClick={() => setOpen(!open)}>
-                <IconButton
-                    aria-label="expand row"
-                    size="small"
-                >
-                    {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-                </IconButton>
+                <TableCell  align="center">
+                    {TableElementType}
                 </TableCell>
                 <TableCell  align="center">
                     {TableElementTitle}
-                </TableCell>
-                <TableCell  align="center">
-                    {TableElementType}
                 </TableCell>
                 <TableCell  align="center">
                     {TableElementAuthor}
@@ -66,7 +61,7 @@ export default function TableCellElement(
                     }
                 </TableCell>
                 <TableCell align="center">
-                    <Button onClick={() => {console.log(TableElementId)}} variant="contained"> Info</Button>
+                    <Button onClick={() => {navigate(`/book/${TableElementId}`)}} variant="contained"> Info</Button>
                 </TableCell>
             </StyledTableRow>
         </>
