@@ -60,7 +60,7 @@ function App() {
           <Route path="/" element={<h1>Acceuil</h1>}/>
           <Route path="/book" element={<Books />}/>
           <Route path="/book/:id" element={<Form />}/>
-          <Route path="/form" element={<h1>form</h1>}/>
+          <Route path="/form" element={<Form />}/>
           <Route path="/qr" element={<h1>qr</h1>}/>
           <Route path="*" element={<h1>SA EXISTE PO</h1>}/>
         </Routes>
