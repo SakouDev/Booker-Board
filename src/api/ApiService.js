@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url = 'http://localhost:5000';
+const url = 'http://vigneronluc.com:5000';
 
 const ApiService = {
     init() {},
@@ -20,9 +20,9 @@ const ApiService = {
         return axios
             .put(`${url}/api/${ressource}`, data)
     },
-    delete(ressource, data) {
+    delete(ressource) {
         return axios
-            .delete(`${url}/api/${ressource}/${data}`)
+            .delete(`${url}/api/${ressource}`)
     },
 }
 

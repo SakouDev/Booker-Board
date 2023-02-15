@@ -2,13 +2,9 @@ import { Box, Button, Card, CardContent, MenuItem, TextField } from '@mui/materi
 import { useNavigate, useParams } from 'react-router-dom'
 import { ApiService } from '../../api/ApiService'
 
-export default function Form() {
+export default function CreateForm() {
 
   const navigate = useNavigate()
-  let { id } = useParams()
-
-  console.log("haha",id)
-
   const genres = [
     {
       value: 'Manga',
@@ -49,12 +45,8 @@ export default function Form() {
                 user : 0
             }],
     }
-      id ? 
-        ApiService.put(`books/${id}`, data)
-        .then(() => navigate('/'))
-        :
         ApiService.post('books', data)
-        .then(() => navigate('/'))
+        .then(() => navigate('/book'))
 }
 
   return (
@@ -69,7 +61,7 @@ export default function Form() {
           onSubmit={HandleSubmit}
       >
         <CardContent>
-        <h1> {id ? 'Update' : 'Create' } A Book </h1>
+        <h1> Create A Book </h1>
             <TextField
                 required
                 id="outlined-required"
