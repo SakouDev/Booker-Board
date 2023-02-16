@@ -3,7 +3,6 @@ import { TableBody } from '@mui/material'
 
 export default function ITAccountTableBody({props, rowsPerPage, page, searchTerm} : any )
 {
-    console.log("props",props.data)
     const filteredData = props.data.filter((val:any) => {
         
         return (

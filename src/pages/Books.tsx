@@ -21,8 +21,11 @@ export default function Books() {
       option5 : "Availability" 
     }
 
-    if(books == null) return <CircularProgress size={100} style={{marginTop:'20%'}} />
-    console.log(books)
+    if(books === null) return (
+      <div style={{display: 'flex', justifyContent: 'center'}}>
+        <CircularProgress size={100} style={{marginTop:'20%'}} />
+      </div>
+    )
   return (
     <>
       <Tables data={books} headerData={HeaderCandidat} />

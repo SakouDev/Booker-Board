@@ -6,7 +6,6 @@ import { useState } from "react";
 export default function Tables(data:any){
 
     const [searchTerm, setSearchTerm] = useState('')
-    console.log('haha')
     return (
         <>
             <TableContainer component={Paper} sx={{ flex : 1 }} >

@@ -9,13 +9,15 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { ApiService } from '../api/ApiService';
+import { useNavigate } from 'react-router-dom';
 
 const theme = createTheme();
 
 
-export default function Login({setLogged, setDataCode}: {setLogged: Function, setDataCode: Function}) {
+export default function Login({setCookie, setDataCode}: {setCookie: Function, setDataCode: Function}) {
 
     const [title, setTitle] = React.useState("Sign in");
+    const navigate = useNavigate()
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -25,9 +27,10 @@ export default function Login({setLogged, setDataCode}: {setLogged: Function, se
         ApiService.login({
             name: data.get('name'),
             code: data.get('password'),
-        }).then(() => {
+        }).then((element) => {
             setDataCode(data.get('password'));
-            setLogged(true);
+            setCookie("Menfou",element);
+            navigate('/book');
         }).catch(() => {
             setTitle("Wrong credentials");
         })
@@ -35,11 +38,21 @@ export default function Login({setLogged, setDataCode}: {setLogged: Function, se
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs" >
+      <Container 
+        style={{backgroundColor : 'white', borderRadius:'20px'}} 
+        sx={{
+          marginTop : 20,
+          height:'50vh', 
+          display:'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }} 
+        component="main" 
+        maxWidth="md" 
+      >
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 20,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',

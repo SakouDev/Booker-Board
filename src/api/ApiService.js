@@ -1,6 +1,9 @@
 import axios from 'axios'
 
 const url = 'http://vigneronluc.com:5000';
+// const url = 'http://localhost:5000';
+
+const relou = 'http://141.94.247.187:3000'
 
 const ApiService = {
     init() {},
@@ -11,6 +14,10 @@ const ApiService = {
     get(ressource) {
         return axios
             .get(`${url}/api/${ressource}`)
+    },
+    getUser(ressource) {
+        return axios
+            .get(`${relou}/api/${ressource}`)
     },
     post(ressource, data) {
         return axios

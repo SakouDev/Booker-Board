@@ -11,14 +11,16 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
 import TableData from "./TableData";
-import { TableCell, TextField } from '@mui/material';
+import { MenuItem, TableCell, TextField } from '@mui/material';
+import ClearIcon from '@mui/icons-material/Clear';
 
 
 function TablePaginationActions(props:any){
 
     const theme = useTheme();
     const { count, page, rowsPerPage, onPageChange } = props;
-    
+
+
     const handleFirstPageButtonClick = (event:any) => {
         onPageChange(event, 0);
     };
@@ -79,6 +81,13 @@ TablePaginationActions.propTypes = {
 export default function TableFooters({data, searchTerm, setSearchTerm}:any) {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+    const genres = [
+      {value: 'Manga'},
+      {value: 'Roman'},
+      {value: 'Biography'},
+      {value: 'Press'},
+  ];
   
     const handleChangePage = (event:any, newPage:any) => {
       setPage(newPage);
@@ -99,9 +108,30 @@ export default function TableFooters({data, searchTerm, setSearchTerm}:any) {
                         inputProps={{ style: { color: '#1976d2'}}}
                         variant='outlined' 
                         margin="none" 
-                        label="Search" 
+                        label="Search"
+                        type="text"
+                        name="search"
+                        placeholder='Search'
                         onChange={(element) => setSearchTerm(element.target.value)}
                       />
+                    </TableCell>
+                    <TableCell align='center' style={{width:'25%',backgroundColor:'white'}} >
+                      <TextField
+                          style={{width:'50%'}}
+                          required      
+                          id="outlined-required"
+                          label="Type"
+                          select
+                          name="genres"
+                          onChange={(element) => setSearchTerm(element.target.value)}
+                      >
+                        {genres.map((option) => (
+                            <MenuItem key={option.value} value={option.value}>
+                            {option.value}
+                            </MenuItem>
+                        ))}
+                      </TextField>
+                      <ClearIcon fontSize='large' style={{cursor:'pointer', marginTop:'10px'}} onClick={() => setSearchTerm('')} />
                     </TableCell>
                     <TablePagination
                         rowsPerPageOptions={[2, 5, 10, 25, 50,{ label: 'All', value: -1 }]}

@@ -6,32 +6,32 @@ import DefaultUpdateForm from './DefaultUpdateForm';
 
 export default function UpdateForm() {
 
-    const navigate = useNavigate()
+  const navigate = useNavigate()
 
-    const [books, setBooks] = useState<any>([])
-    const [id, setId] = useState<any>("")
+  const [books, setBooks] = useState<any>([])
+  const [id, setId] = useState<any>("")
 
-    useEffect(() => {
-        ApiService.get('books')
-        .then((response) => {
-            setBooks(response.data.result)
-        })
-    }, [])
+  useEffect(() => {
+    ApiService.get('books')
+    .then((response) => {
+      setBooks(response.data.result)
+    })
+  }, [])
 
   function HandleSubmit(event : any){
     event.preventDefault()
 
-    const data : any = {
-            title: event.target.title.value,
-            type: event.target.type.value,
-            author: event.target.author.value,
-            location: event.target.location.value,
-            history: [{
-                emprunt : new Date(),
-                rendu : new Date(),
-                user : 0
-            }],
-    }
+  const data : any = {
+    title: event.target.title.value,
+    type: event.target.type.value,
+    author: event.target.author.value,
+    location: event.target.location.value,
+    history: [{
+        emprunt : new Date(),
+        rendu : new Date(),
+        user : 0
+    }],
+  }
         ApiService.put(`books/${event.target.id.value}`, data)
         .then(() => navigate('/book'))
 }

@@ -6,22 +6,10 @@ export default function DefaultUpdateForm({id} : any) {
 
     const [book, setBook] = useState<any>(null)
     const genres = [
-        {
-        value: 'Manga',
-        label: 'Manga',
-        },
-        {
-        value: 'Roman',
-        label: 'Roman',
-        },
-        {
-        value: 'Biography',
-        label: 'Biography',
-        },
-        {
-        value: 'Press',
-        label: 'Press',
-        },
+        {value: 'Manga'},
+        {value: 'Roman'},
+        {value: 'Biography'},
+        {value: 'Press'},
     ];
     const spot = [
         { value: 'Boulogne' },
@@ -69,7 +57,7 @@ export default function DefaultUpdateForm({id} : any) {
         >
         {genres.map((option) => (
             <MenuItem key={option.value} value={option.value}>
-            {option.label}
+            {option.value}
             </MenuItem>
         ))}
         </TextField>

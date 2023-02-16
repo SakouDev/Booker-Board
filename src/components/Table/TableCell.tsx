@@ -39,10 +39,10 @@ export default function TableCellElement(
         <>
             <StyledTableRow key={TableElementId}>
                 <TableCell  align="center">
-                    {TableElementType}
+                    {TableElementTitle}
                 </TableCell>
                 <TableCell  align="center">
-                    {TableElementTitle}
+                    {TableElementType}
                 </TableCell>
                 <TableCell  align="center">
                     {TableElementAuthor}

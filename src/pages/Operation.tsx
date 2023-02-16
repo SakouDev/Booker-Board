@@ -1,4 +1,4 @@
-import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, CircularProgress, Typography } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import * as React from 'react';
 import Form from '../components/Form/CreateForm';
@@ -8,7 +8,7 @@ import UpdateForm from '../components/Form/UpdateForm';
 import DeleteForm from '../components/Form/DeleteForm';
 
 export default function ControlledAccordions({dataCode} : any) {
-  const [expanded, setExpanded] = React.useState<string | false>(false);
+  const [expanded, setExpanded] = React.useState<string | false>('panel1');
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -16,6 +16,12 @@ export default function ControlledAccordions({dataCode} : any) {
     };
 
       handleChange('panel1')
+
+      if(dataCode === null) return (
+        <div style={{display: 'flex', justifyContent: 'center'}}>
+          <CircularProgress size={100} style={{marginTop:'20%'}} />
+        </div>
+      )
 
   return (
     <div>
