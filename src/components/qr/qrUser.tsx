@@ -40,7 +40,7 @@ export default function QRUser() {
         <TextField
             required      
             id="outlined-required"
-            label="Book"
+            label="User"
             select
             name="book"
             onChange={(event:any) => {
