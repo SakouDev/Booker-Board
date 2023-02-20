@@ -64,7 +64,7 @@ export default function QRBook() {
             <>
               {bookId?._id &&
                 <CardContent style={{width:'fit-content'}} id='capture'>
-                  <QRCode value = {bookId._id} />
+                  <QRCode value = { `{"bookId": "${bookId._id}"} ` } />
                 </CardContent>
               }
               <div>

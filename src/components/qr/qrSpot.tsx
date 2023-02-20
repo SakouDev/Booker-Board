@@ -53,7 +53,7 @@ export default function QRSpot() {
         {spotId &&
             <>
                 <CardContent style={{width:'fit-content'}} id='capture'>
-                    <QRCode value = {spotId} />
+                    <QRCode value =  { `{"spotName": "${spotId}"} ` }  />
                 </CardContent>
                 <div>
                     <Button 

@@ -57,7 +57,7 @@ export default function QRUser() {
         {userId &&
             <>
                 <CardContent style={{width:'fit-content'}} id='capture'>
-                  <QRCode value = {userId.code} />
+                  <QRCode value =  { `{"memberId": "${userId.code}"} ` } />
                 </CardContent>
                 <div>
                     <Button 
